@@ -98,6 +98,8 @@ public class MovieRepository {
     public String deleteAllDirectors(){
         for(Map.Entry<Movie, Director> entry : movieDirectorDB.entrySet()){
             if(entry.getValue() != null){
+                moviesDatabase.remove(entry.getKey().getName());
+                directorsDatabase.remove(entry.getValue().getName());
                 movieDirectorDB.remove(entry.getKey());
             }
         }
