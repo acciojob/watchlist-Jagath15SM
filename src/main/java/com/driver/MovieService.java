@@ -69,4 +69,10 @@ public class MovieService {
         return result;
     }
 
+    // 10. Get director_name associated with movieName
+    public String getDirectorByMovieName(String movieName){
+        String result = movieRepository.getDirectorByMovieName(movieName);
+        return result;
+    }
+
 }

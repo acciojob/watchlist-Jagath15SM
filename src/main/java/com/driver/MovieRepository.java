@@ -15,6 +15,8 @@ public class MovieRepository {
     HashMap<String, Director> directorsDatabase = new HashMap<>();
     HashMap<Movie, Director> movieDirectorDB = new HashMap<>();
     HashMap<String, List<String>> director_movies = new HashMap<>();
+    HashMap<String, String> movie_director = new HashMap<>();
+
 
     // Create - Add values to the database
     // 1. Add movie
@@ -23,6 +25,7 @@ public class MovieRepository {
         moviesDatabase.put(name, movie);
         return "Successfully added Movie to database";
     }
+
 
     // 2. Add Director
     public String addDirector(Director director){
@@ -41,6 +44,7 @@ public class MovieRepository {
             director_movies.get(directorName).add(movieName);
         }
         movieDirectorDB.put(moviesDatabase.get(movieName), directorsDatabase.get(directorName));
+        movie_director.put(movieName,directorName);
         return "Successfully added Movie-Director to database";
     }
 
@@ -104,6 +108,14 @@ public class MovieRepository {
             }
         }
         return "Successfully removed the pair";
+    }
+
+    // 10. Get director_name associated with movieName
+    public String getDirectorByMovieName(String movieName){
+        if(movie_director.containsKey(movieName)){
+            return movie_director.get(movieName);
+        }
+        return null;
     }
 
 }
